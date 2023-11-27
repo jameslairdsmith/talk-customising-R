@@ -1,0 +1,178 @@
+---
+format:
+  revealjs: 
+    slide-number: true
+    css: styles.css
+    slide-level: 3
+    mouse-wheel: true
+    execute:
+      echo: true
+      warning: false
+    output-file: index.html
+---
+
+## Customising your R experience {style="margin-top: 0em;"}
+
+> James Laird-Smith
+
+```{r}
+#| include: false
+old.hooks <- fansi::set_knit_hooks(knitr::knit_hooks)
+options(crayon.enabled=TRUE)
+```
+
+::: {style="margin-top: 2em; margin-bottom: 1em; font-size: 0.75em;"}
+- Link to slides: [data-exploration-corrr.jameslairdsmith.com/](https://data-exploration-corrr.jameslairdsmith.com/)
+- Repo for talk: [jameslairdsmith/talk-advanced-data-exploration-corrr](https://github.com/jameslairdsmith/talk-advanced-data-exploration-corrr)
+:::
+
+```{r}
+library(corrr)
+library(magrittr)
+```
+
+## Intro
+
+- R
+  - Is already a fantastic environment for interactive programming.
+  - Already has a fantastic IDE in RStudio.
+
+- Most people use only the default workflows of these tools.
+
+In this webinar, I'll be teaching you about customising your R experience using
+'workflow shortcuts'.
+
+
+## Agenda
+
+R 
+
+- .Rprofile
+
+## What is a workflow shortcut?
+
+It's my collective term for a set of things that already exist:
+
+- Keyboard shortcuts (hotkeys)
+- Interactive convenience functions (or snippets)
+- IDE options
+- Start-up scripts
+
+Some of these things you already know, but some will be new (and life changing).
+
+## Motivation: workflow
+
+- **Problem**: learning new things is hard. So why should you spend time 
+investing in your workflow experience?
+
+. . .
+
+- Think about `ctrl + c` and `ctrl + v`.
+  - How frustrating would it be to have to go back to selecting 
+    `Edit > Copy/Paste` from a menu item every single time?
+  - Now that we've invested time in practicing the hotkeys, we don't want to go 
+    back to the less efficient way.
+    
+. . .
+
+- **My solution:** Let frustration be your guide.
+
+---
+
+:::{style="text-align: center;"}
+![](https://www.smbc-comics.com/comics/1475937366-20161008.png){width=40%}
+:::
+
+<!-- ::: aside-footnotes -->
+<!-- https://www.smbc-comics.com/comic/punishment -->
+<!-- ::: -->
+
+
+:::{style="font-size: 0.7em; color: #6f6f6f;"}
+Source: [https://www.smbc-comics.com/comic/punishment](https://www.smbc-comics.com/comic/punishment)
+:::
+
+<!-- ^[https://www.smbc-comics.com/comic/punishment] -->
+
+
+## RStudio
+
+- It's a surprisingly extensible IDE.
+
+- I'm focusing on it because I know a lot of people use it.
+
+Other magical editors:
+
+- Emacs! (Using the ESS package)
+- VS Code (R extension).
+- Vim
+
+
+
+## RStudio (2)
+
+- Everyday interaction:
+  - You can use the rstudoapi package for low-level control like 
+    `openProject()` or `applyTheme()` or even `setCursorPosition()`
+  - More likely, you will use packages that wrap this functionality into an 
+    add-in.
+
+
+### RStudio add-in example 1: datapasta
+
+![](https://raw.githubusercontent.com/milesmcbain/datapasta/master/inst/media/tribble_paste.gif)
+
+:::{style="font-size: 0.7em !important; color: #6f6f6f;"}
+Source: [https://github.com/MilesMcBain/datapasta](https://github.com/MilesMcBain/datapasta)
+:::
+
+### RStudio add-in example 2: WrapRmd
+
+Wrap your Markdown to a fixed width.
+
+![](https://github.com/tjmahr/WrapRmd/raw/master/demo.gif)
+
+:::{style="font-size: 0.7em !important; color: #6f6f6f;"}
+Source: [https://github.com/tjmahr/WrapRmd](https://github.com/tjmahr/WrapRmd)
+:::
+
+### RStudio add-in example 3: styler
+
+Style your R code.
+
+![](https://raw.githubusercontent.com/lorenzwalthert/some_raw_data/master/styler_0.1.gif)
+
+:::{style="font-size: 0.7em !important; color: #6f6f6f;"}
+Source: [https://github.com/r-lib/styler](https://github.com/r-lib/styler)
+:::
+
+
+
+### RStudio add-in example 4: shrtcts
+
+Allows you to to save and automatically set your own keyboard shortcuts.
+
+```{.r code-line-numbers="1-3|5-7|9-11"}
+#' Restart RStudio
+#' @shortcut Ctrl+Alt+Shift+R
+function() rstudioapi::executeCommand("restartR")
+
+#' Go to definition
+#' @shortcut Ctrl+.
+function() rstudioapi::executeCommand("goToDefinition")
+
+#' Wrap markdown text
+#' @shortcut Ctrl+Alt+Shift+W
+WrapRmd::wrap_rmd_addin
+```
+
+<br>
+
+:::{style="font-size: 0.7em !important; color: #6f6f6f;"}
+Source: [https://github.com/gadenbuie/shrtcts](https://github.com/gadenbuie/shrtcts)
+:::
+
+### Rprofile things to set: your prompt {background-image="set-prompt.gif" background-size="contain"}
+
+<!-- ![](set-prompt.gif) -->
+
