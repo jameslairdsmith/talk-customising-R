@@ -172,7 +172,107 @@ WrapRmd::wrap_rmd_addin
 Source: [https://github.com/gadenbuie/shrtcts](https://github.com/gadenbuie/shrtcts)
 :::
 
-### Rprofile things to set: your prompt {background-image="set-prompt.gif" background-size="contain"}
+### Customising R
+
+- R has an ".Rprofile" file.
+  - It contains the R code that will run every time R starts up.
+  - It's found in R's home directory. You can open and edit it with
+    `usethis::edit_r_profile()`.
+    
+. . .
+    
+- I'm going to walk you through some things in my .Rprofile^[[github.com/jameslairdsmith/dotfiles/](https://github.com/jameslairdsmith/dotfiles/blob/main/R/Rprofile.Rmd)].
+  -  Jim Hester's dotfiles are also great^[[github.com/jimhester/dotfiles](https://github.com/jimhester/dotfiles/blob/master/R/Rprofile)].
+  
+## .Rprofile caution 
+
+:::{style="font-size: 0.7em;"}
+
+There are two main things you want to bear in mind.
+
+1) You don't want to compromise the reproducibility of your scripts, 
+
+   - For example, setting `options(max.print = 40)` is acceptable, because it
+     only affects the output that you see at the console.
+   - Including `library(tidyverse)` is not acceptable, because readers of your
+     script then won't know that you've loaded the package.
+     
+:::
+     
+::: {.notes}
+- Remember you are the only one who knows the contents of your .Rprofile.
+- So you only want to change things that affect you (the user) and nothing 
+  that changes the output of the script.
+:::
+     
+. . .
+
+:::{style="font-size: 0.7em;"}
+2) You don't want to unconditionally load packages.
+  - This can cause problems for package installs. 
+  - The best way to do this is to wrap code in functions and only call them 
+    when you need them.
+:::
+ 
+::: {.notes}
+- Imagine you load dplyr in every R session. 
+- You may then struggle to install a new version of dplyr because it will
+  always be loaded.
+:::
+
+## My .Rprofile (1): preferences
+
+```{.r}
+options(max.print = 40)
+options(connectionObserver = NULL)
+# ^ connectionObserver at work just gets in the way.
+options(tidyverse.quiet = TRUE)
+# ^ Is there a way to silence S3 overwrites?
+```
+
+## My .Rprofile (2): logic
+
+:::{style="font-size: 0.7em;"}
+Work out whether I am on RStudio or not.
+:::
+<br>
+
+```{.r}
+on_rstudio <- function() {
+  if (commandArgs()[[1L]] == "RStudio") {
+    return(TRUE)
+  }
+  FALSE
+}
+```
+
+<br>
+
+:::{style="font-size: 0.7em;"}
+I have a whole Twitter [thread](https://twitter.com/JLS_DataScience/status/1587904642670804993?s=20&t=tTPjcXTZW61NZS7fuYDDhQ) about how this is the best way to do this and 
+other methods are wrong.
+
+This code then enables you to write other code more easily like 
+`if(on_rstudio())` etc.
+:::
+
+## My .Rprofile (3): helpers
+
+Helper functions `at_work()` and `my_email()`.
+
+```{.r code-line-numbers="1-4|6-9"}
+at_work <- function() {
+  if(Sys.info()["user"] == "jameslaird-smith") return(FALSE)
+  TRUE
+}
+
+my_email <- function() {
+  if(at_work()) return("James.Laird-Smith@bankofengland.co.uk")
+  "jameslairdsmith@gmail.com"
+}
+```
+
+### My .Rprofile (3): prompt {background-image="set-prompt.gif" background-size="contain"}
 
 <!-- ![](set-prompt.gif) -->
 

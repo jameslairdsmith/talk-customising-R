@@ -539,13 +539,131 @@
 <p>Source: <a href="https://github.com/gadenbuie/shrtcts">https://github.com/gadenbuie/shrtcts</a></p>
 </div>
 </section>
-<section id="rprofile-things-to-set-your-prompt" class="slide level3" data-background-image="set-prompt.gif" data-background-size="contain">
-<h3>Rprofile things to set: your prompt</h3>
+<section id="customising-r" class="slide level3">
+<h3>Customising R</h3>
+<ul>
+<li>R has an “.Rprofile” file.
+<ul>
+<li>It contains the R code that will run every time R starts up.</li>
+<li>It’s found in R’s home directory. You can open and edit it with <code>usethis::edit_r_profile()</code>.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>I’m going to walk you through some things in my .Rprofile<sup>1</sup>.
+<ul>
+<li>Jim Hester’s dotfiles are also great<sup>2</sup>.</li>
+</ul></li>
+</ul>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn1"><p><a href="https://github.com/jameslairdsmith/dotfiles/blob/main/R/Rprofile.Rmd">github.com/jameslairdsmith/dotfiles/</a></p></li><li id="fn2"><p><a href="https://github.com/jimhester/dotfiles/blob/master/R/Rprofile">github.com/jimhester/dotfiles</a></p></li></ol></aside></section></section>
+<section id="rprofile-caution" class="title-slide slide level2 center">
+<h2>.Rprofile caution</h2>
+<div style="font-size: 0.7em;">
+<p>There are two main things you want to bear in mind.</p>
+<ol type="1">
+<li><p>You don’t want to compromise the reproducibility of your scripts,</p>
+<ul>
+<li>For example, setting <code>options(max.print = 40)</code> is acceptable, because it only affects the output that you see at the console.</li>
+<li>Including <code>library(tidyverse)</code> is not acceptable, because readers of your script then won’t know that you’ve loaded the package.</li>
+</ul></li>
+</ol>
+</div>
+<aside class="notes">
+<ul>
+<li>Remember you are the only one who knows the contents of your .Rprofile.</li>
+<li>So you only want to change things that affect you (the user) and nothing that changes the output of the script.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+<div class="fragment">
+<div style="font-size: 0.7em;">
+<ol start="2" type="1">
+<li>You don’t want to unconditionally load packages.</li>
+</ol>
+<ul>
+<li>This can cause problems for package installs.</li>
+<li>The best way to do this is to wrap code in functions and only call them when you need them.</li>
+</ul>
+</div>
+<aside class="notes">
+<ul>
+<li>Imagine you load dplyr in every R session.</li>
+<li>You may then struggle to install a new version of dplyr because it will always be loaded.</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+</section>
+
+<section id="my-.rprofile-1-preferences" class="title-slide slide level2 center">
+<h2>My .Rprofile (1): preferences</h2>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">40</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">options</span>(<span class="at">connectionObserver =</span> <span class="cn">NULL</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ^ connectionObserver at work just gets in the way.</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">options</span>(<span class="at">tidyverse.quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># ^ Is there a way to silence S3 overwrites?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section id="my-.rprofile-2-logic" class="title-slide slide level2 center">
+<h2>My .Rprofile (2): logic</h2>
+<div style="font-size: 0.7em;">
+<p>Work out whether I am on RStudio or not.</p>
+</div>
+<p><br></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>on_rstudio <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">if</span> (<span class="fu">commandArgs</span>()[[1L]] <span class="sc">==</span> <span class="st">"RStudio"</span>) {</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  }</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="cn">FALSE</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><br></p>
+<div style="font-size: 0.7em;">
+<p>I have a whole Twitter <a href="https://twitter.com/JLS_DataScience/status/1587904642670804993?s=20&amp;t=tTPjcXTZW61NZS7fuYDDhQ">thread</a> about how this is the best way to do this and other methods are wrong.</p>
+<p>This code then enables you to write other code more easily like <code>if(on_rstudio())</code> etc.</p>
+</div>
+</section>
+
+<section>
+<section id="my-.rprofile-3-helpers" class="title-slide slide level2 center">
+<h2>My .Rprofile (3): helpers</h2>
+<p>Helper functions <code>at_work()</code> and <code>my_email()</code>.</p>
+<div class="sourceCode" id="cb5" data-code-line-numbers="1-4|6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>at_work <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="cf">if</span>(<span class="fu">Sys.info</span>()[<span class="st">"user"</span>] <span class="sc">==</span> <span class="st">"jameslaird-smith"</span>) <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cn">TRUE</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>}</span>
+<span id="cb5-5"><a href="#cb5-5"></a></span>
+<span id="cb5-6"><a href="#cb5-6"></a>my_email <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">if</span>(<span class="fu">at_work</span>()) <span class="fu">return</span>(<span class="st">"James.Laird-Smith@bankofengland.co.uk"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="st">"jameslairdsmith@gmail.com"</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="my-.rprofile-3-prompt" class="slide level3" data-background-image="set-prompt.gif" data-background-size="contain">
+<h3>My .Rprofile (3): prompt</h3>
 <!-- ![](set-prompt.gif) -->
 <div class="footer footer-default">
 
 </div>
 </section></section>
+
     </div>
   </div>
 
