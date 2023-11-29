@@ -38,13 +38,6 @@ options(crayon.enabled=TRUE)
 In this webinar, I'll be teaching you about customising your R experience using
 'workflow shortcuts'.
 
-
-## Agenda
-
-R 
-
-- .Rprofile
-
 ## What is a workflow shortcut?
 
 It's my collective term for a set of things that already exist:
@@ -58,20 +51,27 @@ Some of these things you already know, but some will be new (and life changing).
 
 ## Motivation: workflow
 
+:::{style="font-size: 0.8em;"}
+
 - **Problem**: learning new things is hard. So why should you spend time 
 investing in your workflow experience?
+:::
 
 . . .
 
+:::{style="font-size: 0.8em;"}
 - Think about `ctrl + c` and `ctrl + v`.
   - How frustrating would it be to have to go back to selecting 
     `Edit > Copy/Paste` from a menu item every single time?
   - Now that we've invested time in practicing the hotkeys, we don't want to go 
     back to the less efficient way.
-    
+:::
+
 . . .
 
+:::{style="font-size: 0.8em;"}
 - **My solution:** Let frustration be your guide.
+:::
 
 ---
 
@@ -291,7 +291,9 @@ options(
 
 This way my email changes depending on whether I'm at work or at home.
 
-### My .Rprofile (5): prompt {background-image="set-prompt.gif" background-size="contain"}
+---
+
+<!-- ### My .Rprofile (5): prompt {background-image="set-prompt.gif" background-size="contain"} -->
 
 :::{.notes}
 Created with the asciicast package.
