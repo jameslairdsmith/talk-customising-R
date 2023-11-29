@@ -209,9 +209,10 @@ There are two main things you want to bear in mind.
 
 :::{style="font-size: 0.7em;"}
 2) You don't want to unconditionally load packages.
-  - This can cause problems for package installs. 
-  - The best way to do this is to wrap code in functions and only call them 
-    when you need them.
+
+    - This can cause problems for package installs. 
+    - The best way to do this is to wrap code in functions and only call them 
+      when you need them.
 :::
  
 ::: {.notes}
@@ -227,8 +228,10 @@ options(max.print = 40)
 options(connectionObserver = NULL)
 # ^ connectionObserver at work just gets in the way.
 options(tidyverse.quiet = TRUE)
-# ^ Is there a way to silence S3 overwrites?
+options(styler.cache_root = "styler-perm")
 ```
+
+Also includes packages options, which are fine to set.
 
 ## My .Rprofile (2): logic
 
@@ -272,7 +275,108 @@ my_email <- function() {
 }
 ```
 
-### My .Rprofile (3): prompt {background-image="set-prompt.gif" background-size="contain"}
+## My .Rprofile (4): package dev options
 
-<!-- ![](set-prompt.gif) -->
+```{.r code-line-numbers="|6"}
+options(
+  usethis.full_name = "James Laird-Smith",
+  usethis.description = list(
+    "Authors@R" = utils::person(
+      "James", "Laird-Smith",
+      email = my_email(),
+      role = c("aut", "cre"),
+      comment = c(ORCID = "0000-0003-1175-4046")
+    ),
+    Version = "0.0.0.9000"
+  ),
+  usethis.overwrite = TRUE
+)
+```
 
+This way my email changes depending on whether I'm at work or at home.
+
+### My .Rprofile (5): prompt {background-image="set-prompt.gif" background-size="contain"}
+
+:::{.notes}
+Created with the asciicast package.
+:::
+
+
+## My .Rprofile (6): RStudio preferences
+
+```{.r code-line-numbers="1,6|2|3|4|5"}
+setHook("rstudio.sessionInit", function(newSession) {
+  rstudioapi::writeRStudioPreference("editor_keybindings", "vim")
+  rstudioapi::writeRStudioPreference("save_workspace", "never")
+  rstudioapi::writeRStudioPreference("always_save_history", FALSE)
+  rstudioapi::writeRStudioPreference("save_files_before_build", TRUE)
+}, action = "append")
+```
+
+## My .Rprofile (7): Setting keyboard shortcuts
+
+:::{style="font-size: 0.8em;"}
+I don't want to load the shrtcts package every session, so I wrap it in a 
+function instead.
+:::
+
+```{.r}
+jls_set_shrtcts <- function() {
+  shrtcts::add_rstudio_shortcuts(set_keyboard_shortcuts = TRUE)
+}
+```
+
+
+:::{style="font-size: 0.8em;"}
+Tip: you can start all your convenience functions with your initials so you get
+auto-complete.
+:::
+
+### The customiser package
+
+:::{style="font-size: 0.7em;"}
+I've created an R Markdown template called customiser^[github.com/jameslairdsmith/customiser].
+
+- It's very new. Not (yet?) on CRAN.
+- Allows you to create an R Markdown document where you can put the content 
+  you want to go in your .Rprofile.
+- When you click "Knit" in RStudio, it writes the content to the correct
+  .Rprofile location.
+- Helpful if you want to version control your config and then use it on 
+  different systems.
+
+:::
+
+. . .
+
+```{.rmd}
+---
+title: "JLS .Rprofile"
+knit: customiser::customiser
+allow_overwrite: TRUE
+---
+
+This is the file I use for compiling my .Rprofile.
+```
+
+:::{.notes}
+You can see it in action in my dotfiles repo.
+:::
+
+## Conclusion
+
+- R is already a fantastic interactive programming environment.
+- RStudio is already a fantastic IDE.
+
+. . . 
+
+<hr>
+
+- Both R and RStudio are also highly configurable and so allow you to cusomise 
+your experience of using them.
+- The R community could benefit from more config sharing.
+- I've created the customiser package to make this easier.
+
+# Thank you! {style="text-align: center;"}
+
+Questions?

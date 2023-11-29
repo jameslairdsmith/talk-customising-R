@@ -588,12 +588,12 @@
 <div class="fragment">
 <div style="font-size: 0.7em;">
 <ol start="2" type="1">
-<li>You don’t want to unconditionally load packages.</li>
-</ol>
+<li><p>You don’t want to unconditionally load packages.</p>
 <ul>
 <li>This can cause problems for package installs.</li>
 <li>The best way to do this is to wrap code in functions and only call them when you need them.</li>
-</ul>
+</ul></li>
+</ol>
 </div>
 <aside class="notes">
 <ul>
@@ -620,7 +620,8 @@
 <span id="cb3-2"><a href="#cb3-2"></a><span class="fu">options</span>(<span class="at">connectionObserver =</span> <span class="cn">NULL</span>)</span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ^ connectionObserver at work just gets in the way.</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="fu">options</span>(<span class="at">tidyverse.quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="co"># ^ Is there a way to silence S3 overwrites?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">options</span>(<span class="at">styler.cache_root =</span> <span class="st">"styler-perm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Also includes packages options, which are fine to set.</p>
 </section>
 
 <section id="my-.rprofile-2-logic" class="title-slide slide level2 center">
@@ -642,7 +643,6 @@
 </div>
 </section>
 
-<section>
 <section id="my-.rprofile-3-helpers" class="title-slide slide level2 center">
 <h2>My .Rprofile (3): helpers</h2>
 <p>Helper functions <code>at_work()</code> and <code>my_email()</code>.</p>
@@ -656,13 +656,122 @@
 <span id="cb5-8"><a href="#cb5-8"></a>  <span class="st">"jameslairdsmith@gmail.com"</span></span>
 <span id="cb5-9"><a href="#cb5-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="my-.rprofile-3-prompt" class="slide level3" data-background-image="set-prompt.gif" data-background-size="contain">
-<h3>My .Rprofile (3): prompt</h3>
-<!-- ![](set-prompt.gif) -->
+
+<section>
+<section id="my-.rprofile-4-package-dev-options" class="title-slide slide level2 center">
+<h2>My .Rprofile (4): package dev options</h2>
+<div class="sourceCode" id="cb6" data-code-line-numbers="|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">usethis.full_name =</span> <span class="st">"James Laird-Smith"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">usethis.description =</span> <span class="fu">list</span>(</span>
+<span id="cb6-4"><a href="#cb6-4"></a>    <span class="st">"Authors@R"</span> <span class="ot">=</span> utils<span class="sc">::</span><span class="fu">person</span>(</span>
+<span id="cb6-5"><a href="#cb6-5"></a>      <span class="st">"James"</span>, <span class="st">"Laird-Smith"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6"></a>      <span class="at">email =</span> <span class="fu">my_email</span>(),</span>
+<span id="cb6-7"><a href="#cb6-7"></a>      <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>),</span>
+<span id="cb6-8"><a href="#cb6-8"></a>      <span class="at">comment =</span> <span class="fu">c</span>(<span class="at">ORCID =</span> <span class="st">"0000-0003-1175-4046"</span>)</span>
+<span id="cb6-9"><a href="#cb6-9"></a>    ),</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">Version =</span> <span class="st">"0.0.0.9000"</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>  ),</span>
+<span id="cb6-12"><a href="#cb6-12"></a>  <span class="at">usethis.overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This way my email changes depending on whether I’m at work or at home.</p>
+</section>
+<section id="my-.rprofile-5-prompt" class="slide level3" data-background-image="set-prompt.gif" data-background-size="contain">
+<h3>My .Rprofile (5): prompt</h3>
+<aside class="notes">
+<p>Created with the asciicast package.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section></section>
+<section id="my-.rprofile-6-rstudio-preferences" class="title-slide slide level2 center">
+<h2>My .Rprofile (6): RStudio preferences</h2>
+<div class="sourceCode" id="cb7" data-code-line-numbers="1,6|2|3|4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"editor_keybindings"</span>, <span class="st">"vim"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_workspace"</span>, <span class="st">"never"</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"always_save_history"</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_files_before_build"</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb7-6"><a href="#cb7-6"></a>}, <span class="at">action =</span> <span class="st">"append"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+
+<section>
+<section id="my-.rprofile-7-setting-keyboard-shortcuts" class="title-slide slide level2 center">
+<h2>My .Rprofile (7): Setting keyboard shortcuts</h2>
+<div style="font-size: 0.8em;">
+<p>I don’t want to load the shrtcts package every session, so I wrap it in a function instead.</p>
+</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>jls_set_shrtcts <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  shrtcts<span class="sc">::</span><span class="fu">add_rstudio_shortcuts</span>(<span class="at">set_keyboard_shortcuts =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-3"><a href="#cb8-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div style="font-size: 0.8em;">
+<p>Tip: you can start all your convenience functions with your initials so you get auto-complete.</p>
+</div>
+</section>
+<section id="the-customiser-package" class="slide level3">
+<h3>The customiser package</h3>
+<div style="font-size: 0.7em;">
+<p>I’ve created an R Markdown template called customiser<sup>1</sup>.</p>
+<ul>
+<li>It’s very new. Not (yet?) on CRAN.</li>
+<li>Allows you to create an R Markdown document where you can put the content you want to go in your .Rprofile.</li>
+<li>When you click “Knit” in RStudio, it writes the content to the correct .Rprofile location.</li>
+<li>Helpful if you want to version control your config and then use it on different systems.</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource rmd number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a>---</span>
+<span id="cb9-2"><a href="#cb9-2"></a>title: "JLS .Rprofile"</span>
+<span id="cb9-3"><a href="#cb9-3"></a>knit: customiser::customiser</span>
+<span id="cb9-4"><a href="#cb9-4"></a>allow_overwrite: TRUE</span>
+<span id="cb9-5"><a href="#cb9-5"></a>---</span>
+<span id="cb9-6"><a href="#cb9-6"></a></span>
+<span id="cb9-7"><a href="#cb9-7"></a>This is the file I use for compiling my .Rprofile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<aside class="notes">
+<p>You can see it in action in my dotfiles repo.</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>github.com/jameslairdsmith/customiser</p></li></ol></aside></section></section>
+<section id="conclusion" class="title-slide slide level2 center">
+<h2>Conclusion</h2>
+<ul>
+<li>R is already a fantastic interactive programming environment.</li>
+<li>RStudio is already a fantastic IDE.</li>
+</ul>
+<div class="fragment">
+<hr>
+<ul>
+<li>Both R and RStudio are also highly configurable and so allow you to cusomise your experience of using them.</li>
+<li>The R community could benefit from more config sharing.</li>
+<li>I’ve created the customiser package to make this easier.</li>
+</ul>
+</div>
+</section>
+
+<section id="thank-you" class="title-slide slide level1 center" style="text-align: center;">
+<h1>Thank you!</h1>
+<p>Questions?</p>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
+
 
     </div>
   </div>
