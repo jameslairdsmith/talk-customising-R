@@ -293,7 +293,7 @@ This way my email changes depending on whether I'm at work or at home.
 
 ---
 
-<!-- ### My .Rprofile (5): prompt {background-image="set-prompt.gif" background-size="contain"} -->
+### {background-image="set-prompt.gif" background-size="contain"}
 
 :::{.notes}
 Created with the asciicast package.
