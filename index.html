@@ -395,13 +395,9 @@
 </blockquote>
 <div style="margin-top: 2em; margin-bottom: 1em; font-size: 0.75em;">
 <ul>
-<li>Link to slides: <a href="https://data-exploration-corrr.jameslairdsmith.com/">data-exploration-corrr.jameslairdsmith.com/</a></li>
-<li>Repo for talk: <a href="https://github.com/jameslairdsmith/talk-advanced-data-exploration-corrr">jameslairdsmith/talk-advanced-data-exploration-corrr</a></li>
+<li>Link to slides: <a href="https://customising-r.jameslairdsmith.com/">customising-r.jameslairdsmith.com/</a></li>
+<li>Repo for talk: <a href="https://github.com/jameslairdsmith/talk-customising-R">jameslairdsmith/talk-customising-R</a></li>
 </ul>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">library</span>(corrr)</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(magrittr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 
@@ -523,17 +519,17 @@
 <section id="rstudio-add-in-example-4-shrtcts" class="slide level3">
 <h3>RStudio add-in example 4: shrtcts</h3>
 <p>Allows you to to save and automatically set your own keyboard shortcuts.</p>
-<div class="sourceCode" id="cb2" data-code-line-numbers="1-3|5-7|9-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">#' Restart RStudio</span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="co">#' @shortcut Ctrl+Alt+Shift+R</span></span>
-<span id="cb2-3"><a href="#cb2-3"></a><span class="cf">function</span>() rstudioapi<span class="sc">::</span><span class="fu">executeCommand</span>(<span class="st">"restartR"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4"></a></span>
-<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#' Go to definition</span></span>
-<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#' @shortcut Ctrl+.</span></span>
-<span id="cb2-7"><a href="#cb2-7"></a><span class="cf">function</span>() rstudioapi<span class="sc">::</span><span class="fu">executeCommand</span>(<span class="st">"goToDefinition"</span>)</span>
-<span id="cb2-8"><a href="#cb2-8"></a></span>
-<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#' Wrap markdown text</span></span>
-<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#' @shortcut Ctrl+Alt+Shift+W</span></span>
-<span id="cb2-11"><a href="#cb2-11"></a>WrapRmd<span class="sc">::</span>wrap_rmd_addin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-code-line-numbers="1-3|5-7|9-11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">#' Restart RStudio</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co">#' @shortcut Ctrl+Alt+Shift+R</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="cf">function</span>() rstudioapi<span class="sc">::</span><span class="fu">executeCommand</span>(<span class="st">"restartR"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#' Go to definition</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#' @shortcut Ctrl+.</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="cf">function</span>() rstudioapi<span class="sc">::</span><span class="fu">executeCommand</span>(<span class="st">"goToDefinition"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#' Wrap markdown text</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#' @shortcut Ctrl+Alt+Shift+W</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a>WrapRmd<span class="sc">::</span>wrap_rmd_addin</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <div style="font-size: 0.7em !important; color: #6f6f6f;">
 <p>Source: <a href="https://github.com/gadenbuie/shrtcts">https://github.com/gadenbuie/shrtcts</a></p>
@@ -616,11 +612,11 @@
 
 <section id="my-.rprofile-1-preferences" class="title-slide slide level2 center">
 <h2>My .Rprofile (1): preferences</h2>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">40</span>)</span>
-<span id="cb3-2"><a href="#cb3-2"></a><span class="fu">options</span>(<span class="at">connectionObserver =</span> <span class="cn">NULL</span>)</span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co"># ^ connectionObserver at work just gets in the way.</span></span>
-<span id="cb3-4"><a href="#cb3-4"></a><span class="fu">options</span>(<span class="at">tidyverse.quiet =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb3-5"><a href="#cb3-5"></a><span class="fu">options</span>(<span class="at">styler.cache_root =</span> <span class="st">"styler-perm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">options</span>(<span class="at">max.print =</span> <span class="dv">40</span>)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="fu">options</span>(<span class="at">connectionObserver =</span> <span class="cn">NULL</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># ^ connectionObserver at work just gets in the way.</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="fu">options</span>(<span class="at">tidyverse.quiet =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="fu">options</span>(<span class="at">styler.cache_root =</span> <span class="st">"styler-perm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Also includes packages options, which are fine to set.</p>
 </section>
 
@@ -630,12 +626,12 @@
 <p>Work out whether I am on RStudio or not.</p>
 </div>
 <p><br></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>on_rstudio <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">if</span> (<span class="fu">commandArgs</span>()[[1L]] <span class="sc">==</span> <span class="st">"RStudio"</span>) {</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
-<span id="cb4-4"><a href="#cb4-4"></a>  }</span>
-<span id="cb4-5"><a href="#cb4-5"></a>  <span class="cn">FALSE</span></span>
-<span id="cb4-6"><a href="#cb4-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>on_rstudio <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="cf">if</span> (<span class="fu">commandArgs</span>()[[1L]] <span class="sc">==</span> <span class="st">"RStudio"</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="fu">return</span>(<span class="cn">TRUE</span>)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  }</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="cn">FALSE</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><br></p>
 <div style="font-size: 0.7em;">
 <p>I have a whole Twitter <a href="https://twitter.com/JLS_DataScience/status/1587904642670804993?s=20&amp;t=tTPjcXTZW61NZS7fuYDDhQ">thread</a> about how this is the best way to do this and other methods are wrong.</p>
@@ -646,33 +642,33 @@
 <section id="my-.rprofile-3-helpers" class="title-slide slide level2 center">
 <h2>My .Rprofile (3): helpers</h2>
 <p>Helper functions <code>at_work()</code> and <code>my_email()</code>.</p>
-<div class="sourceCode" id="cb5" data-code-line-numbers="1-4|6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>at_work <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="cf">if</span>(<span class="fu">Sys.info</span>()[<span class="st">"user"</span>] <span class="sc">==</span> <span class="st">"jameslaird-smith"</span>) <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
-<span id="cb5-3"><a href="#cb5-3"></a>  <span class="cn">TRUE</span></span>
-<span id="cb5-4"><a href="#cb5-4"></a>}</span>
-<span id="cb5-5"><a href="#cb5-5"></a></span>
-<span id="cb5-6"><a href="#cb5-6"></a>my_email <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="cf">if</span>(<span class="fu">at_work</span>()) <span class="fu">return</span>(<span class="st">"James.Laird-Smith@bankofengland.co.uk"</span>)</span>
-<span id="cb5-8"><a href="#cb5-8"></a>  <span class="st">"jameslairdsmith@gmail.com"</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4" data-code-line-numbers="1-4|6-9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>at_work <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="cf">if</span>(<span class="fu">Sys.info</span>()[<span class="st">"user"</span>] <span class="sc">==</span> <span class="st">"jameslaird-smith"</span>) <span class="fu">return</span>(<span class="cn">FALSE</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="cn">TRUE</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>my_email <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="cf">if</span>(<span class="fu">at_work</span>()) <span class="fu">return</span>(<span class="st">"James.Laird-Smith@bankofengland.co.uk"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="st">"jameslairdsmith@gmail.com"</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section>
 <section id="my-.rprofile-4-package-dev-options" class="title-slide slide level2 center">
 <h2>My .Rprofile (4): package dev options</h2>
-<div class="sourceCode" id="cb6" data-code-line-numbers="|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">options</span>(</span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="at">usethis.full_name =</span> <span class="st">"James Laird-Smith"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="at">usethis.description =</span> <span class="fu">list</span>(</span>
-<span id="cb6-4"><a href="#cb6-4"></a>    <span class="st">"Authors@R"</span> <span class="ot">=</span> utils<span class="sc">::</span><span class="fu">person</span>(</span>
-<span id="cb6-5"><a href="#cb6-5"></a>      <span class="st">"James"</span>, <span class="st">"Laird-Smith"</span>,</span>
-<span id="cb6-6"><a href="#cb6-6"></a>      <span class="at">email =</span> <span class="fu">my_email</span>(),</span>
-<span id="cb6-7"><a href="#cb6-7"></a>      <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>),</span>
-<span id="cb6-8"><a href="#cb6-8"></a>      <span class="at">comment =</span> <span class="fu">c</span>(<span class="at">ORCID =</span> <span class="st">"0000-0003-1175-4046"</span>)</span>
-<span id="cb6-9"><a href="#cb6-9"></a>    ),</span>
-<span id="cb6-10"><a href="#cb6-10"></a>    <span class="at">Version =</span> <span class="st">"0.0.0.9000"</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a>  ),</span>
-<span id="cb6-12"><a href="#cb6-12"></a>  <span class="at">usethis.overwrite =</span> <span class="cn">TRUE</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5" data-code-line-numbers="|6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">options</span>(</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="at">usethis.full_name =</span> <span class="st">"James Laird-Smith"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="at">usethis.description =</span> <span class="fu">list</span>(</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="st">"Authors@R"</span> <span class="ot">=</span> utils<span class="sc">::</span><span class="fu">person</span>(</span>
+<span id="cb5-5"><a href="#cb5-5"></a>      <span class="st">"James"</span>, <span class="st">"Laird-Smith"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6"></a>      <span class="at">email =</span> <span class="fu">my_email</span>(),</span>
+<span id="cb5-7"><a href="#cb5-7"></a>      <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"aut"</span>, <span class="st">"cre"</span>),</span>
+<span id="cb5-8"><a href="#cb5-8"></a>      <span class="at">comment =</span> <span class="fu">c</span>(<span class="at">ORCID =</span> <span class="st">"0000-0003-1175-4046"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    ),</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="at">Version =</span> <span class="st">"0.0.0.9000"</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a>  ),</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  <span class="at">usethis.overwrite =</span> <span class="cn">TRUE</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This way my email changes depending on whether I’m at work or at home.</p>
 </section>
 <section id="my-.rprofile-5-prompt" class="slide level3" data-background-image="set-prompt.gif" data-background-size="contain">
@@ -693,12 +689,12 @@
 </section></section>
 <section id="my-.rprofile-6-rstudio-preferences" class="title-slide slide level2 center">
 <h2>My .Rprofile (6): RStudio preferences</h2>
-<div class="sourceCode" id="cb7" data-code-line-numbers="1,6|2|3|4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
-<span id="cb7-2"><a href="#cb7-2"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"editor_keybindings"</span>, <span class="st">"vim"</span>)</span>
-<span id="cb7-3"><a href="#cb7-3"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_workspace"</span>, <span class="st">"never"</span>)</span>
-<span id="cb7-4"><a href="#cb7-4"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"always_save_history"</span>, <span class="cn">FALSE</span>)</span>
-<span id="cb7-5"><a href="#cb7-5"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_files_before_build"</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb7-6"><a href="#cb7-6"></a>}, <span class="at">action =</span> <span class="st">"append"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6" data-code-line-numbers="1,6|2|3|4|5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">setHook</span>(<span class="st">"rstudio.sessionInit"</span>, <span class="cf">function</span>(newSession) {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"editor_keybindings"</span>, <span class="st">"vim"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_workspace"</span>, <span class="st">"never"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"always_save_history"</span>, <span class="cn">FALSE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  rstudioapi<span class="sc">::</span><span class="fu">writeRStudioPreference</span>(<span class="st">"save_files_before_build"</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb6-6"><a href="#cb6-6"></a>}, <span class="at">action =</span> <span class="st">"append"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 
 <section>
@@ -707,9 +703,9 @@
 <div style="font-size: 0.8em;">
 <p>I don’t want to load the shrtcts package every session, so I wrap it in a function instead.</p>
 </div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>jls_set_shrtcts <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  shrtcts<span class="sc">::</span><span class="fu">add_rstudio_shortcuts</span>(<span class="at">set_keyboard_shortcuts =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-3"><a href="#cb8-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>jls_set_shrtcts <span class="ot">&lt;-</span> <span class="cf">function</span>() {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  shrtcts<span class="sc">::</span><span class="fu">add_rstudio_shortcuts</span>(<span class="at">set_keyboard_shortcuts =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div style="font-size: 0.8em;">
 <p>Tip: you can start all your convenience functions with your initials so you get auto-complete.</p>
 </div>
@@ -726,13 +722,13 @@
 </ul>
 </div>
 <div class="fragment">
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource rmd number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a href="#cb9-1"></a>---</span>
-<span id="cb9-2"><a href="#cb9-2"></a>title: "JLS .Rprofile"</span>
-<span id="cb9-3"><a href="#cb9-3"></a>knit: customiser::customiser</span>
-<span id="cb9-4"><a href="#cb9-4"></a>allow_overwrite: TRUE</span>
-<span id="cb9-5"><a href="#cb9-5"></a>---</span>
-<span id="cb9-6"><a href="#cb9-6"></a></span>
-<span id="cb9-7"><a href="#cb9-7"></a>This is the file I use for compiling my .Rprofile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource rmd number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a href="#cb8-1"></a>---</span>
+<span id="cb8-2"><a href="#cb8-2"></a>title: "JLS .Rprofile"</span>
+<span id="cb8-3"><a href="#cb8-3"></a>knit: customiser::customiser</span>
+<span id="cb8-4"><a href="#cb8-4"></a>allow_overwrite: TRUE</span>
+<span id="cb8-5"><a href="#cb8-5"></a>---</span>
+<span id="cb8-6"><a href="#cb8-6"></a></span>
+<span id="cb8-7"><a href="#cb8-7"></a>This is the file I use for compiling my .Rprofile.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <aside class="notes">
 <p>You can see it in action in my dotfiles repo.</p>
 <style type="text/css">

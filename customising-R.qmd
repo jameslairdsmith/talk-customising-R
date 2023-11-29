@@ -22,14 +22,10 @@ options(crayon.enabled=TRUE)
 ```
 
 ::: {style="margin-top: 2em; margin-bottom: 1em; font-size: 0.75em;"}
-- Link to slides: [data-exploration-corrr.jameslairdsmith.com/](https://data-exploration-corrr.jameslairdsmith.com/)
-- Repo for talk: [jameslairdsmith/talk-advanced-data-exploration-corrr](https://github.com/jameslairdsmith/talk-advanced-data-exploration-corrr)
+- Link to slides: [customising-r.jameslairdsmith.com/](https://customising-r.jameslairdsmith.com/)
+- Repo for talk: [jameslairdsmith/talk-customising-R](https://github.com/jameslairdsmith/talk-customising-R)
 :::
 
-```{r}
-library(corrr)
-library(magrittr)
-```
 
 ## Intro
 
